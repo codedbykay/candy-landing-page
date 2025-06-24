@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Candy Delights</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Candy Delights - Sweet candies with love. Shop gummy bears, candy drops, and lollipops.">
   <style>
     body {
       background: linear-gradient(135deg, #fff0f5, #ffe6f0);
@@ -58,7 +60,6 @@
       }
     }
 
-    /* ✨ Glitter confetti effect */
     .sparkles {
       position: absolute;
       top: 0;
@@ -72,7 +73,6 @@
       z-index: -1;
     }
 
-    /* 🍬 Candy card styles */
     .card-container {
       display: flex;
       flex-wrap: wrap;
@@ -108,10 +108,63 @@
       font-size: 0.9rem;
       color: #555;
     }
+
+    form {
+      margin-top: 3rem;
+    }
+
+    input, textarea, button {
+      padding: 0.7rem;
+      border: none;
+      border-radius: 10px;
+      margin: 0.5rem;
+      width: 80%;
+      max-width: 400px;
+      font-family: inherit;
+    }
+
+    button {
+      background-color: #ff69b4;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #e75480;
+    }
+
+    footer {
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .card {
+        width: 90%;
+      }
+
+      img {
+        width: 90%;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="sparkles"></div>
+
+  <!-- 🔊 Background Music -->
+  <audio autoplay loop hidden>
+    <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
 
   <h1>Candy Delights</h1>
   <p>Sweet candies with love.</p>
@@ -119,11 +172,11 @@
   <img src="https://raw.githubusercontent.com/aykaykay/candy-landing-page/main/A_digital_photograph_captures_heart-shaped_candies.png" alt="Heart candies">
 
   <br>
-  <a href="https://candydelights.com" target="_blank">Shop Now</a>
+  <a href="#shop" aria-label="Shop now at Candy Delights">Shop Now</a>
 
-  <!-- 🍭 CANDY COLLECTION CARDS START -->
+  <!-- 🍭 Candy Collection -->
   <h2 style="margin-top: 3rem;">Our Sweet Picks 🍭</h2>
-  <div class="card-container">
+  <div class="card-container" id="shop">
     <div class="card">
       <img src="https://cdn.pixabay.com/photo/2016/11/21/17/29/candy-1845787_1280.jpg" alt="Gummy Bears">
       <h3>Gummy Bears</h3>
@@ -140,7 +193,41 @@
       <p>Classic swirl pops of joy.</p>
     </div>
   </div>
-  <!-- 🍭 CANDY COLLECTION CARDS END -->
 
+  <!-- 📨 Newsletter Sign-Up -->
+  <h2>Join Our Newsletter 💌</h2>
+  <form action="https://formspree.io/f/mwkgygld" method="POST">
+    <input type="email" name="email" placeholder="Your email address" required>
+    <button type="submit">Subscribe</button>
+  </form>
+
+  <!-- 📬 Contact Email -->
+  <h2>Contact Us 📬</h2>
+  <form action="mailto:yourname@example.com" method="POST" enctype="text/plain">
+    <input type="text" name="name" placeholder="Your name" required>
+    <input type="email" name="email" placeholder="Your email" required>
+    <textarea name="message" placeholder="Your message" rows="5" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+
+  <!-- 🔊 Hover Sound -->
+  <audio id="hover-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-game-click-1114.mp3" preload="auto"></audio>
+
+  <script>
+    const hoverSound = document.getElementById("hover-sound");
+    const cards = document.querySelectorAll('.card, a, button');
+
+    cards.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        hoverSound.currentTime = 0;
+        hoverSound.play();
+      });
+    });
+  </script>
+
+  <!-- 🌐 Footer -->
+  <footer>
+    Candy Delights © 2025 • Made with 💖 • Ready for your domain!
+  </footer>
 </body>
 </html>
